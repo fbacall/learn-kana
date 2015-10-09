@@ -1,0 +1,41 @@
+#current-kana {
+    font-size: 200%;
+    color: blue;
+}
+
+.wrong {
+    color: #900;
+}
+
+.right {
+    color: #0c0;
+}
+
+.kana-container {
+}
+
+.kana-col {
+    width: 32px;
+    margin-right: 8px;
+    float: left;
+    height: 160px;
+    background: lightblue;
+    position: relative;
+}
+
+.kana:last-child {
+    bottom: 0;
+    position: absolute;
+}
+
+.kana:nth-child(2):nth-last-child(2) {
+    bottom: 64px;
+    position: absolute;
+}
+
+.kana {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    position: relative;
+}
