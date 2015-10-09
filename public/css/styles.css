@@ -1,6 +1,7 @@
 #current-kana {
-    font-size: 200%;
-    color: blue;
+    font-size: 96px;
+    color: #a38bff;
+    text-align: center;
 }
 
 .wrong {
@@ -15,27 +16,48 @@
 }
 
 .kana-col {
-    width: 32px;
-    margin-right: 8px;
+    width: 48px;
+    margin: 0 0 16px;
     float: left;
-    height: 160px;
-    background: lightblue;
+    height: 280px;
     position: relative;
 }
 
-.kana:last-child {
+.kana-tile:last-child {
     bottom: 0;
     position: absolute;
 }
 
-.kana:nth-child(2):nth-last-child(2) {
-    bottom: 64px;
+.kana-tile:nth-child(2):nth-last-child(2) {
+    bottom: 40%;
     position: absolute;
 }
 
-.kana {
-    width: 32px;
-    height: 32px;
-    font-size: 24px;
+#hiragana .kana-tile {
+    background: #eed5d8;
+    color: #a29092;
+}
+
+#katakana .kana-tile {
+    background: #d0dfee;
+    color: #7b848e;
+}
+
+.kana-tile {
+    width: 40px;
+    height: 48px;
     position: relative;
+    text-align: center;
+    border-radius: 4px;
+    margin: 0 8px 8px 0;
+}
+
+.kana {
+    color: #333;
+    font-size: 20px;
+}
+
+.kana-count {
+    font-size: 80%;
+    float: right;
 }

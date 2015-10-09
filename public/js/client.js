@@ -1,5 +1,9 @@
 var kana, flatKana;
 var currentKana;
+var kanaCount = {
+  'hiragana': 0,
+  'katakana': 0
+};
 
 $.ajax({
   dataType: "json",
@@ -14,8 +18,8 @@ function initApp(data) {
   }, []); // flatten
   console.log("Loaded!");
   setKana();
-  populateKana('hiragana', $('#hiragana'));
-  populateKana('katakana', $('#katakana'));
+  populateKanaTable('hiragana', $('#hiragana'));
+  populateKanaTable('katakana', $('#katakana'));
 }
 
 $(document).ready(function () {
@@ -44,14 +48,17 @@ function setKana() {
   $('#current-kana').html(currentKana.katakana);
 }
 
-function populateKana(type, element) {
+function populateKanaTable(type, element) {
   for(var i = 0; i < kana.length; i++) {
     col = '<div class="kana-col">';
     for(var j = 0; j < kana[i].length; j++) {
-      col += ('<div class="kana">' + kana[i][j][type] + '</div>');
+      col += ('<div class="kana-tile"><div class="kana">' + kana[i][j][type] + '</div>' +
+        kana[i][j]['romaji'][0] + '</div>');
+      kanaCount[type]++;
     }
     col += '</div>';
     console.log(col);
     element.append(col);
   }
+  $('#'+type+'-count').html(kanaCount[type]);
 }
