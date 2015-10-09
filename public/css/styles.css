@@ -4,6 +4,17 @@
     text-align: center;
 }
 
+#previous-kana {
+    height: 120px;
+    color: transparent;
+    font-size: 16px;
+    text-align: center;
+}
+
+#previous-kana .kana {
+    font-size: 48px;
+}
+
 .wrong {
     color: #900;
 }
@@ -52,7 +63,7 @@
     margin: 0 8px 8px 0;
 }
 
-.kana {
+.kana-tile .kana {
     color: #333;
     font-size: 20px;
 }

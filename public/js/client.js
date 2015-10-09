@@ -28,6 +28,8 @@ $(document).ready(function () {
     if(e.which == 13) {
       var cssClass = checkInput($('#input').val()) ? 'right' : 'wrong';
       $('#results').append('<span class="'+cssClass+'">' + currentKana.katakana + '<span>');
+      $('#previous-kana').html('<div class="'+cssClass+'"><div class="kana">' + currentKana.katakana +
+          "</div>" + currentKana.romaji[0] + '<div>');
       $(this).val('');
       setKana();
     }
