@@ -16,16 +16,20 @@
 <div class="container">
   <h1>Learn Kana</h1>
 
-  <div class="row">
-    <div id="previous-kana" class="col-xs-4"></div>
-    <div id="current-kana" class="col-xs-4"></div>
+  <div id="quiz">
+    <div class="row">
+      <div id="previous-kana" class="col-xs-4"></div>
+      <div id="current-kana" class="col-xs-4"></div>
+    </div>
+
+    <div class="form-group">
+      <input id="input" type="text" class="form-control"/>
+    </div>
   </div>
 
-  <div class="form-group">
-    <input id="input" type="text" class="form-control"/>
+  <div id="results" style="display: none">
+    <div id="results-tally"></div>
   </div>
-
-  <div id="results" style="display: none"></div>
 
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="hiragana-panel-heading">
@@ -36,8 +40,10 @@
         <div class="kana-count">(<span id="hiragana-count">0</span>/71)</div>
       </h4>
     </div>
-    <div id="hiragana-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hiragana-panel-heading">
+    <div id="hiragana-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hiragana-panel-heading">
       <div class="panel-body">
+        <button class="btn btn-sm btn-default select-all">All</button>
+        <button class="btn btn-sm btn-default select-none">None</button>
         <div id="hiragana" class="kana-container clearfix"></div>
       </div>
     </div>
@@ -54,6 +60,8 @@
     </div>
     <div id="katakana-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="katakana-panel-heading">
       <div class="panel-body">
+        <button class="btn btn-sm btn-default select-all">All</button>
+        <button class="btn btn-sm btn-default select-none">None</button>
         <div id="katakana" class="kana-container clearfix"></div>
       </div>
     </div>

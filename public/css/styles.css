@@ -24,6 +24,7 @@
 }
 
 .kana-container {
+    margin-top: 16px;
 }
 
 .kana-col {
@@ -32,6 +33,9 @@
     float: left;
     height: 280px;
     position: relative;
+}
+
+.kana-col.active {
 }
 
 .kana-tile:last-child {
@@ -44,12 +48,12 @@
     position: absolute;
 }
 
-#hiragana .kana-tile {
+#hiragana .kana-col.active .kana-tile {
     background: #eed5d8;
     color: #a29092;
 }
 
-#katakana .kana-tile {
+#katakana .kana-col.active .kana-tile {
     background: #d0dfee;
     color: #7b848e;
 }
@@ -61,6 +65,8 @@
     text-align: center;
     border-radius: 4px;
     margin: 0 8px 8px 0;
+    background: #eee;
+    color: #999;
 }
 
 .kana-tile .kana {
