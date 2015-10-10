@@ -61,6 +61,7 @@ function setKana() {
 }
 
 function populateKanaTable(type, element) {
+  element.html('');
   for(var i = 0; i < kana.length; i++) {
     col = '<div class="kana-col active" data-kana-group="'+i+'" data-kana-type="'+type+'">';
     for(var j = 0; j < kana[i].length; j++) {
