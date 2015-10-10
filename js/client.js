@@ -101,22 +101,23 @@ function updateActiveKana() {
 function startQuiz() {
   updateActiveKana();
   activeKana.shuffle();
-  answers.correct = 0;
-  answers.incorrect = 0;
   $('#select-kana').hide();
-  $('#previous-kana').html('');
   $('#quiz').show();
   nextKana();
 }
 
 function endQuiz() {
-  $('#score').html('Score: ' + answers.correct + ' / ' + activeKana.length);
+  $('#score').html('Score: ' + answers.correct + ' / ' + (answers.correct + answers.incorrect));
   $('#results').show();
   $('#quiz').hide();
 }
 
 function resetQuiz() {
   $('#results').hide();
+  $('#results-tally').html('');
+  $('#previous-kana').html('');
+  answers.correct = 0;
+  answers.incorrect = 0;
   $('#select-kana').show();
 }
 
