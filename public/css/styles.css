@@ -15,6 +15,21 @@
     font-size: 48px;
 }
 
+#results-tally {
+    height: 120px;
+    color: transparent;
+    font-size: 12px;
+    text-align: center;
+}
+
+#results-tally > div {
+    float: left;
+}
+
+#results-tally .kana {
+    font-size: 36px;
+}
+
 .wrong {
     color: #900;
 }
@@ -77,4 +92,12 @@
 .kana-count {
     font-size: 80%;
     float: right;
+}
+
+#results {
+    font-size: 24px;
+}
+
+#answers {
+    font-size: 36px;
 }

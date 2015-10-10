@@ -16,7 +16,7 @@
 <div class="container">
   <h1>Learn Kana</h1>
 
-  <div id="quiz">
+  <div id="quiz" style="display: none">
     <div class="row">
       <div id="previous-kana" class="col-xs-4"></div>
       <div id="current-kana" class="col-xs-4"></div>
@@ -25,47 +25,63 @@
     <div class="form-group">
       <input id="input" type="text" class="form-control"/>
     </div>
+
+    <p>
+      <button id="end-quiz" class="btn btn-danger">Quit</button>
+    </p>
   </div>
 
   <div id="results" style="display: none">
-    <div id="results-tally"></div>
+    <div id="results-tally" class="clearfix"></div>
+    <div id="answers"></div>
+    <p>
+      <button id="reset-quiz" class="btn btn-success">Try again</button>
+    </p>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="hiragana-panel-heading">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" href="#hiragana-panel" aria-expanded="false" aria-controls="hiragana-panel">
-          Hiragana / ひらがな
-        </a>
-        <div class="kana-count">(<span id="hiragana-count">0</span>/71)</div>
-      </h4>
+  <div id="select-kana">
+    <h2>Select Kana...</h2>
+    <p>
+      <button id="start-quiz" class="btn btn-success">Start!</button>
+    </p>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="hiragana-panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" href="#hiragana-panel" aria-expanded="false" aria-controls="hiragana-panel">
+            Hiragana / ひらがな
+          </a>
+          <div class="kana-count">(<span id="hiragana-count">0</span>/71)</div>
+        </h4>
+      </div>
+      <div id="hiragana-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hiragana-panel-heading">
+        <div class="panel-body">
+          <div id="hiragana" class="kana-container clearfix">Loading Hiragana</div>
+          <button class="btn btn-sm btn-default select-all">All</button>
+          <button class="btn btn-sm btn-default select-none">None</button>
+        </div>
+      </div>
     </div>
-    <div id="hiragana-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hiragana-panel-heading">
-      <div class="panel-body">
-        <button class="btn btn-sm btn-default select-all">All</button>
-        <button class="btn btn-sm btn-default select-none">None</button>
-        <div id="hiragana" class="kana-container clearfix">Loading Hiragana</div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="katakana-panel-heading">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" href="#katakana-panel" aria-expanded="false" aria-controls="katakana-panel">
+            Katakana / カタカナ
+          </a>
+          <div class="kana-count">(<span id="katakana-count">0</span>/71)</div>
+        </h4>
+      </div>
+      <div id="katakana-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="katakana-panel-heading">
+        <div class="panel-body">
+          <div id="katakana" class="kana-container clearfix">Loading Katakana</div>
+          <button class="btn btn-sm btn-default select-all">All</button>
+          <button class="btn btn-sm btn-default select-none">None</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="katakana-panel-heading">
-      <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" href="#katakana-panel" aria-expanded="false" aria-controls="katakana-panel">
-          Katakana / カタカナ
-        </a>
-        <div class="kana-count">(<span id="katakana-count">0</span>/71)</div>
-      </h4>
-    </div>
-    <div id="katakana-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="katakana-panel-heading">
-      <div class="panel-body">
-        <button class="btn btn-sm btn-default select-all">All</button>
-        <button class="btn btn-sm btn-default select-none">None</button>
-        <div id="katakana" class="kana-container clearfix">Loading Katakana</div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

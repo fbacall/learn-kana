@@ -1,12 +1,17 @@
 var kana, flatKana;
 
-var currentKana;
-
+var currentKanaIndex = -1;
 var activeKana = [];
 
+var answers = {
+  correct: 0,
+  incorrect: 0
+};
+
+
 var kanaCount = {
-  'hiragana': 0,
-  'katakana': 0
+  hiragana: 0,
+  katakana: 0
 };
 
 Array.prototype.shuffle = function(){
@@ -36,10 +41,10 @@ function initApp(data) {
     return a.concat(b);
   }, []); // flatten
   console.log("Loaded!");
-  setKana();
   populateKanaTable('hiragana', $('#hiragana'));
   populateKanaTable('katakana', $('#katakana'));
   updateActiveKana();
+
   $('.kana-col').click(function () {
     $(this).toggleClass('active');
     updateActiveKana();
@@ -47,17 +52,19 @@ function initApp(data) {
 }
 
 function checkInput(val) {
-  for(var i = 0; i < currentKana.romaji.length; i++) {
-    if(val.toLowerCase() === currentKana.romaji[i]) {
+  for(var i = 0; i < activeKana[currentKanaIndex].romaji.length; i++) {
+    if(val.toLowerCase() === activeKana[currentKanaIndex].romaji[i]) {
       return true;
     }
   }
   return false;
 }
 
-function setKana() {
-  currentKana = flatKana[Math.floor(Math.random() * flatKana.length)];
-  $('#current-kana').html(currentKana.katakana);
+function nextKana() {
+  if(++currentKanaIndex >= activeKana.length)
+    endQuiz();
+  else
+    $('#current-kana').html(activeKana[currentKanaIndex].symbol);
 }
 
 function populateKanaTable(type, element) {
@@ -76,6 +83,7 @@ function populateKanaTable(type, element) {
 
 function updateActiveKana() {
   activeKana = [];
+  currentKanaIndex = -1;
   kanaCount.hiragana = 0;
   kanaCount.katakana = 0;
   $('.kana-col.active').each(function () {
@@ -90,20 +98,48 @@ function updateActiveKana() {
   $('#katakana-count').html(kanaCount.katakana);
 }
 
+function startQuiz() {
+  activeKana.shuffle();
+  answers.correct = 0;
+  answers.incorrect = 0;
+  $('#select-kana').hide();
+  $('#previous-kana').html('');
+  $('#quiz').show();
+  nextKana();
+}
+
+function endQuiz() {
+  $('#answers').html('' + answers.correct + ' / ' + activeKana.length);
+  $('#results').show();
+  $('#quiz').hide();
+}
+
+function resetQuiz() {
+  $('#results').hide();
+  $('#select-kana').show();
+}
+
 $(document).ready(function () {
   $('#input').focus();
 
 
   $('#input').keypress(function(e) {
     if(e.which == 13) {
-      var cssClass = checkInput($('#input').val()) ? 'right' : 'wrong';
-      $('#results-tally').append('<span class="'+cssClass+'">' + currentKana.katakana + '<span>');
-      $('#previous-kana').html('<div class="'+cssClass+'"><div class="kana">' + currentKana.katakana +
-          "</div>" + currentKana.romaji[0] + '<div>');
+      var answer = checkInput($('#input').val());
+      answers[answer ? 'correct' : 'incorrect']++;
+      var cssClass = answer ? 'right' : 'wrong';
+      var kanaEl = '<div class="'+cssClass+'"><div class="kana">' + activeKana[currentKanaIndex].symbol +
+          "</div>" + activeKana[currentKanaIndex].romaji[0] + '<div>';
+      $('#results-tally').append(kanaEl);
+      $('#previous-kana').html(kanaEl);
       $(this).val('');
-      setKana();
+      nextKana();
     }
   });
+
+  $('#start-quiz').click(startQuiz);
+  $('#end-quiz').click(endQuiz);
+  $('#reset-quiz').click(resetQuiz);
 
   $('.select-none').click(function () {
     $(this).siblings('.kana-container').find('.kana-col').removeClass('active');
