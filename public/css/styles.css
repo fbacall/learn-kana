@@ -1,3 +1,7 @@
+#app {
+    max-width: 800px;
+}
+
 #current-kana {
     font-size: 96px;
     color: #a38bff;
@@ -6,7 +10,6 @@
 
 #previous-kana {
     height: 120px;
-    color: transparent;
     font-size: 16px;
     text-align: center;
 }
@@ -27,7 +30,7 @@
 }
 
 #results-tally .kana {
-    font-size: 36px;
+    font-size: 24px;
 }
 
 .wrong {
@@ -63,6 +66,11 @@
     position: absolute;
 }
 
+.kana-col:hover .kana-tile {
+    background: #fffcdd;
+    color: #60604f;
+}
+
 #hiragana .kana-col.active .kana-tile {
     background: #eed5d8;
     color: #a29092;
@@ -90,8 +98,6 @@
 }
 
 .kana-count {
-    font-size: 80%;
-    float: right;
 }
 
 #results {
@@ -100,4 +106,10 @@
 
 #answers {
     font-size: 36px;
+}
+
+.select-buttons {
+    margin-top: 8px;
+    margin-right: 8px;
+    text-align: right;
 }

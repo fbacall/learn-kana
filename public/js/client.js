@@ -8,7 +8,6 @@ var answers = {
   incorrect: 0
 };
 
-
 var kanaCount = {
   hiragana: 0,
   katakana: 0
@@ -61,6 +60,7 @@ function checkInput(val) {
 }
 
 function nextKana() {
+  $('#progress').html('' + (answers.correct + answers.incorrect) + ' / ' + activeKana.length);
   if(++currentKanaIndex >= activeKana.length)
     endQuiz();
   else
@@ -99,6 +99,7 @@ function updateActiveKana() {
 }
 
 function startQuiz() {
+  updateActiveKana();
   activeKana.shuffle();
   answers.correct = 0;
   answers.incorrect = 0;
@@ -109,7 +110,7 @@ function startQuiz() {
 }
 
 function endQuiz() {
-  $('#answers').html('' + answers.correct + ' / ' + activeKana.length);
+  $('#score').html('Score: ' + answers.correct + ' / ' + activeKana.length);
   $('#results').show();
   $('#quiz').hide();
 }
@@ -125,13 +126,16 @@ $(document).ready(function () {
 
   $('#input').keypress(function(e) {
     if(e.which == 13) {
-      var answer = checkInput($('#input').val());
+      var input = $('#input').val();
+      var answer = checkInput(input);
       answers[answer ? 'correct' : 'incorrect']++;
       var cssClass = answer ? 'right' : 'wrong';
       var kanaEl = '<div class="'+cssClass+'"><div class="kana">' + activeKana[currentKanaIndex].symbol +
           "</div>" + activeKana[currentKanaIndex].romaji[0] + '<div>';
       $('#results-tally').append(kanaEl);
       $('#previous-kana').html(kanaEl);
+      if(!answer)
+        $('#previous-kana').append("<del>"+input+"</del>");
       $(this).val('');
       nextKana();
     }
@@ -142,12 +146,12 @@ $(document).ready(function () {
   $('#reset-quiz').click(resetQuiz);
 
   $('.select-none').click(function () {
-    $(this).siblings('.kana-container').find('.kana-col').removeClass('active');
+    $(this).closest('.tab-pane').find('.kana-col').removeClass('active');
     updateActiveKana();
   });
 
   $('.select-all').click(function () {
-    $(this).siblings('.kana-container').find('.kana-col').addClass('active');
+    $(this).closest('.tab-pane').find('.kana-col').addClass('active');
     updateActiveKana();
   });
 });
