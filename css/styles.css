@@ -46,11 +46,22 @@
 }
 
 .kana-col {
-    width: 48px;
-    margin: 0 0 16px;
+    width: 40px;
+    margin: 0 4px 16px;
     float: left;
-    height: 280px;
+    height: 288px;
     position: relative;
+    cursor: pointer;
+    border-top: 4px solid #fff;
+    padding-top: 8px;
+}
+
+#hiragana .kana-col:hover {
+    border-color: #eed5d8;
+}
+
+#katakana .kana-col:hover {
+    border-color: #d0dfee;
 }
 
 .kana-col.active {
@@ -66,10 +77,10 @@
     position: absolute;
 }
 
-.kana-col:hover .kana-tile {
-    background: #fffcdd;
-    color: #60604f;
-}
+/*.kana-col:hover .kana-tile {*/
+    /*background: #fffcdd;*/
+    /*color: #60604f;*/
+/*}*/
 
 #hiragana .kana-col.active .kana-tile {
     background: #eed5d8;
@@ -87,7 +98,7 @@
     position: relative;
     text-align: center;
     border-radius: 4px;
-    margin: 0 8px 8px 0;
+    margin-bottom: 8px;
     background: #eee;
     color: #999;
 }
