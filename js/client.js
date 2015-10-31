@@ -13,6 +13,8 @@ var kanaCount = {
   katakana: 0
 };
 
+var storageEnabled = (typeof(Storage) !== "undefined");
+
 Array.prototype.shuffle = function(){
   var counter = this.length, temp, index;
 
@@ -42,12 +44,45 @@ function initApp(data) {
   console.log("Loaded!");
   populateKanaTable('hiragana', $('#hiragana'));
   populateKanaTable('katakana', $('#katakana'));
+  if(storageEnabled)
+    loadState();
   updateActiveKana();
 
   $('.kana-col').click(function () {
     $(this).toggleClass('active');
     updateActiveKana();
   });
+}
+
+function loadState() {
+  applyState('hiragana');
+  applyState('katakana');
+}
+
+function saveState() {
+  storeState('hiragana');
+  storeState('katakana');
+}
+
+function applyState(type) {
+  var kanaState = localStorage.getItem(type);
+  if(kanaState == null)
+    kanaState = storeState(type);
+  else
+    kanaState = JSON.parse(kanaState);
+
+  var element = $('#'+type);
+  element.find('.kana-col').each(function (index) {
+    $(this).removeClass('active');
+    if(kanaState[index])
+      $(this).addClass('active');
+  });
+}
+
+function storeState(type) {
+  var state = $('#'+type).find('.kana-col').map(function () { return $(this).hasClass('active') }).toArray();
+  localStorage.setItem(type, JSON.stringify(state));
+  return state;
 }
 
 function checkInput(val) {
@@ -96,6 +131,7 @@ function updateActiveKana() {
   });
   $('#hiragana-count').html(kanaCount.hiragana);
   $('#katakana-count').html(kanaCount.katakana);
+  saveState();
 }
 
 function startQuiz() {
