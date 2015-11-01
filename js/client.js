@@ -143,7 +143,7 @@ function startQuiz() {
 }
 
 function endQuiz() {
-  $('#score').html('Score: ' + answers.correct + ' / ' + (answers.correct + answers.incorrect));
+  $('#score').html('' + answers.correct + ' / ' + (answers.correct + answers.incorrect));
   $('#results').show();
   $('#quiz').hide();
 }

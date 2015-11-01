@@ -8,14 +8,18 @@
 
   <title>Learn yo kana</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Permanent+Marker'>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
+<div id="header">
+  <div class="container">
+    <h1>Kana Quiz</h1>
+  </div>
+</div>
 <div class="container" id="app">
-  <h1>Learn Kana</h1>
-
   <div id="quiz" style="display: none">
     <div class="row">
       <div id="previous-kana" class="col-xs-4"></div>
@@ -34,9 +38,14 @@
 
   <div id="results" style="display: none">
     <div class="row">
-      <div id="score" class="col-xs-8"></div>
-      <div class="col-xs-4 text-right">
-        <button id="reset-quiz" class="btn btn-success">Try again</button>
+      <div class="col-xs-7">
+        <h2>
+          Score:<br/>
+          <span id="score"></span>
+        </h2>
+      </div>
+      <div class="col-xs-5 text-right">
+        <button id="reset-quiz" class="btn btn-success btn-lg">Try again</button>
       </div>
     </div>
 
@@ -45,8 +54,12 @@
 
   <div id="select-kana">
     <div class="row">
-      <div class="col-sm-10 col-xs-8"><h2>Select Kana</h2></div>
-      <div class="col-sm-2 col-xs-4 text-right"><button id="start-quiz" class="btn btn-success btn-lg btn-block">Start!</button></div>
+      <div class="col-sm-10 col-xs-8">
+        <h2>Select Kana</h2>
+      </div>
+      <div class="col-sm-2 col-xs-4 text-right">
+        <button id="start-quiz" class="btn btn-success btn-lg btn-block">Start!</button>
+      </div>
     </div>
 
     <div>

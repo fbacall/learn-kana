@@ -1,4 +1,22 @@
-#app {
+h1,h2,h3,h4,.btn,.nav-tabs {
+    font-family: "Permanent Marker", cursive;
+}
+
+#header {
+    background-color: #a38bff;
+    border-bottom: 4px solid #c1b3ff;
+    text-shadow: 2px 2px #524890;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#header h1 {
+    margin: 0;
+    padding: 4px 0;
+}
+
+.container {
     max-width: 800px;
 }
 
