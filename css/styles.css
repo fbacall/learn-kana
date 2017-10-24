@@ -3,9 +3,9 @@ h1,h2,h3,h4,.btn,.nav-tabs {
 }
 
 #header {
-    background-color: #a38bff;
-    border-bottom: 4px solid #c1b3ff;
-    text-shadow: 2px 2px #524890;
+    background-color: #ed4141;
+    border-bottom: 4px solid #aa3838;
+    text-shadow: 3px 3px #aa3838;
     color: white;
     font-weight: bold;
     margin-bottom: 20px;
@@ -52,11 +52,11 @@ h1,h2,h3,h4,.btn,.nav-tabs {
 }
 
 .wrong {
-    color: #900;
+    color: #aa3838;
 }
 
 .right {
-    color: #0c0;
+    color: #5fc60b;
 }
 
 .kana-container {
@@ -141,4 +141,24 @@ h1,h2,h3,h4,.btn,.nav-tabs {
     margin-top: 8px;
     margin-right: 8px;
     text-align: right;
+}
+
+.btn-success {
+    background-color: #5fc60b;
+    border-color: #48910b;
+}
+
+.btn-success:hover {
+    background-color: #8ae23c;
+    border-color: #5fc60b;
+}
+
+.btn-danger {
+    background-color: #ed4141;
+    border-color: #aa3838;
+}
+
+.btn-danger:hover {
+    background-color: #f57576;
+    border-color: #ed4141;
 }
