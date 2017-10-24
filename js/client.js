@@ -95,7 +95,10 @@ function checkInput(val) {
 }
 
 function nextKana() {
-  $('#progress').html('' + (answers.correct + answers.incorrect) + ' / ' + activeKana.length);
+  $('#progress').html(
+      '<li class="right">' + answers.correct + ' correct</li>' +
+      '<li class="wrong">' + answers.incorrect + ' incorrect</li>' +
+      '<li>' + (activeKana.length - answers.correct - answers.incorrect) + ' remaining</li>');
   if(++currentKanaIndex >= activeKana.length)
     endQuiz();
   else
@@ -139,6 +142,7 @@ function startQuiz() {
   activeKana.shuffle();
   $('#select-kana').hide();
   $('#quiz').show();
+  $('#input').focus();
   nextKana();
 }
 

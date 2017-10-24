@@ -1,4 +1,4 @@
-h1,h2,h3,h4,.btn,.nav-tabs {
+h1, h2, h3, h4, .btn, .nav-tabs, #progress {
     font-family: "Permanent Marker", cursive;
 }
 
@@ -22,7 +22,6 @@ h1,h2,h3,h4,.btn,.nav-tabs {
 
 #current-kana {
     font-size: 96px;
-    color: #a38bff;
     text-align: center;
 }
 
@@ -49,6 +48,11 @@ h1,h2,h3,h4,.btn,.nav-tabs {
 
 #results-tally .kana {
     font-size: 24px;
+}
+
+#quiz {
+    max-width: 400px;
+    margin: auto;
 }
 
 .wrong {
@@ -161,4 +165,9 @@ h1,h2,h3,h4,.btn,.nav-tabs {
 .btn-danger:hover {
     background-color: #f57576;
     border-color: #ed4141;
+}
+
+#progress {
+    list-style: none;
+    padding-left: 0;
 }
